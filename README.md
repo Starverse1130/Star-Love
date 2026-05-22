@@ -19,12 +19,12 @@
 </p>
 
 <!-- CTA Button -->
-### 🚀 [✨ Experience The Live Demo ✨](https://github.com/Starverse1130/Star-Love.git)
+### 🚀 [✨ Experience The Live Demo ✨](https://starverse1130.github.io/Star-Love/)
 
 <br/>
 
 <!-- Preview Image -->
-<a href="https://starverse1130.github.io/StarQR/">
+<a href="https://starverse1130.github.io/Star-Love/">
   <img src="assets/screenshots/desktop-index.png" alt="Do You Love Me — Preview" width="880" style="border-radius:10px;"/>
 </a>
 
@@ -35,7 +35,7 @@
   <a href="#-features">Features</a> •
   <a href="#-quick-start">Quick Start</a> •
   <a href="#-screenshots">Screenshots</a> •
-  <a href="https://starverse1130.github.io/StarQR/">Live Demo</a>
+  <a href="https://starverse1130.github.io/Star-Love/">Live Demo</a>
 </p>
 
 
@@ -167,10 +167,10 @@ No installation needed. Just clone and open!
 
 ```bash
 # Clone the repository
-git clone https://github.com/starverse1130/StarQR.git
+git clone https://github.com/Starverse1130/Star-Love.git
 
 # Navigate into the project
-cd StarQR
+cd Star-Love
 
 # Open directly in browser
 open index.html
