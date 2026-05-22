@@ -1,0 +1,707 @@
+/* ============================================================
+   🎨 STYLE.CSS — Design Tokens, Base, Layout, Buttons, Themes
+   ============================================================
+   Phase 1 — Warm Minimalism with Playful Heart
+   ============================================================ */
+
+/* ----------------------------------------------------------
+   1. DESIGN TOKENS (CSS Custom Properties)
+   ---------------------------------------------------------- */
+:root {
+  /* -- Backgrounds ---------------------------------------- */
+  --bg-base:     #faf5f0;   /* Warm off-white, like aged paper */
+  --bg-card:     #ffffff;    /* Pure white for containers */
+  --bg-hover:    #fdf2f2;   /* Subtle rose on hover */
+
+  /* -- Primary Accent (Rose family) ----------------------- */
+  --rose-50:     #fff1f2;
+  --rose-100:    #ffe4e6;
+  --rose-200:    #fecdd3;
+  --rose-300:    #fda4af;
+  --rose-400:    #fb7185;
+  --rose-500:    #f43f5e;   /* Main accent — love red */
+  --rose-600:    #e11d48;
+
+  /* -- Secondary Accents (for escalation) ----------------- */
+  --amber-100:   #fef3c7;
+  --amber-200:   #fde68a;
+  --amber-400:   #fbbf24;
+  --amber-500:   #f59e0b;
+  --orange-100:  #ffedd5;
+  --orange-200:  #fed7aa;
+  --orange-400:  #fb923c;
+  --orange-500:  #f97316;
+  --gold-400:    #f59e0b;
+
+  /* -- Text ----------------------------------------------- */
+  --text-primary:   #1c1917;
+  --text-secondary: #78716c;
+  --text-muted:     #a8a29e;
+  --text-on-accent: #ffffff;
+
+  /* -- Borders -------------------------------------------- */
+  --border-light: #e7e5e4;
+  --border-focus: var(--rose-400);
+
+  /* -- Shadows -------------------------------------------- */
+  --shadow-sm:   0 1px 2px rgba(28, 25, 23, 0.05);
+  --shadow-md:   0 4px 12px rgba(28, 25, 23, 0.08);
+  --shadow-lg:   0 8px 24px rgba(28, 25, 23, 0.12);
+  --shadow-rose: 0 4px 16px rgba(244, 63, 94, 0.2);
+  --shadow-amber: 0 4px 16px rgba(245, 158, 11, 0.2);
+  --shadow-orange: 0 4px 16px rgba(249, 115, 22, 0.2);
+
+  /* -- Motion --------------------------------------------- */
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-smooth: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-bounce: cubic-bezier(0.18, 0.89, 0.32, 1.28);
+  --duration-instant: 80ms;
+  --duration-fast:   150ms;
+  --duration-normal: 250ms;
+  --duration-slow:   400ms;
+
+  /* -- Border Radius -------------------------------------- */
+  --radius-sm:    6px;
+  --radius-md:    12px;
+  --radius-lg:    20px;
+  --radius-full:  9999px;
+
+  /* -- Spacing -------------------------------------------- */
+  --space-1:  4px;
+  --space-2:  8px;
+  --space-3:  12px;
+  --space-4:  16px;
+  --space-6:  24px;
+  --space-8:  32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+}
+
+/* ----------------------------------------------------------
+   2. RESET / BASE
+   ---------------------------------------------------------- */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--bg-base);
+  background-image: radial-gradient(circle at 30% 20%, rgba(251, 113, 133, 0.04) 0%, transparent 50%),
+                    radial-gradient(circle at 70% 80%, rgba(253, 164, 175, 0.03) 0%, transparent 50%);
+  color: var(--text-primary);
+  font-family: "DM Sans", system-ui, -apple-system, sans-serif;
+  font-weight: 400;
+  line-height: 1.5;
+  padding: var(--space-4);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+main {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
+/* ----------------------------------------------------------
+   3. TYPOGRAPHY
+   ---------------------------------------------------------- */
+h1 {
+  font-family: "Playfair Display", Georgia, serif;
+  font-weight: 700;
+  font-size: 1.5rem;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  color: var(--text-primary);
+}
+
+p {
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--text-secondary);
+  max-width: 30ch;
+  margin: 0 auto;
+}
+
+.celebration-heading {
+  font-family: "Dancing Script", cursive;
+  font-weight: 700;
+  font-size: 1.75rem;
+  line-height: 1.2;
+  animation: gentle-pulse 2s ease-in-out infinite;
+}
+
+/* ----------------------------------------------------------
+   3b. NAVBAR — centered logo
+   ---------------------------------------------------------- */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 16px;
+  padding-top: max(10px, env(safe-area-inset-top));
+  background: rgba(250, 245, 240, 0.9);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.navbar-logo {
+  height: 50px;
+  width: auto;
+  object-fit: contain;
+  -webkit-user-drag: none;
+  user-select: none;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+}
+
+.navbar a {
+  text-decoration: none;
+  line-height: 0;
+}
+
+.navbar a:hover .navbar-logo {
+  opacity: 0.8;
+}
+
+/* Push body content below navbar */
+body {
+  padding-top: max(52px, calc(env(safe-area-inset-top) + 40px));
+}
+
+/* ----------------------------------------------------------
+   4. CARD LAYOUT
+   ---------------------------------------------------------- */
+.container {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+  gap: var(--space-4);
+  max-width: 480px;
+  width: 92vw;
+  margin: var(--space-4);
+  padding: var(--space-6) var(--space-4);
+  background: var(--bg-card);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  position: relative;
+  overflow: hidden;
+  padding-left:  max(var(--space-4), env(safe-area-inset-left));
+  padding-right: max(var(--space-4), env(safe-area-inset-right));
+  padding-top:    max(var(--space-6), env(safe-area-inset-top));
+  padding-bottom: max(var(--space-6), env(safe-area-inset-bottom));
+}
+
+.container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--rose-300), var(--rose-400), var(--rose-300));
+  opacity: 0.6;
+}
+
+.page-no1 .container {
+  gap: var(--space-3);
+}
+
+.page-no1 .container::before {
+  background: linear-gradient(90deg, var(--amber-400), var(--gold-400), var(--amber-400));
+}
+
+.page-no2 .container {
+  gap: var(--space-2);
+}
+
+.page-no2 .container::before {
+  background: linear-gradient(90deg, var(--orange-400), var(--amber-400), var(--orange-400));
+}
+
+.page-no3 .container::before {
+  background: linear-gradient(90deg, var(--rose-500), var(--rose-400), var(--rose-500));
+  opacity: 0.8;
+  height: 4px;
+}
+
+.page-no3 .btn-yes:hover {
+  border-color: var(--rose-500);
+  box-shadow:
+    0 8px 24px rgba(244, 63, 94, 0.12),
+    0 0 0 4px rgba(244, 63, 94, 0.06);
+}
+
+.page-yes .container::before {
+  background: linear-gradient(90deg, var(--rose-400), var(--gold-400), var(--rose-400));
+  height: 4px;
+}
+
+/* ----------------------------------------------------------
+   5. GIF / EMBED
+   ---------------------------------------------------------- */
+.tenor-gif-embed,
+.gif-container {
+  max-width: 200px;
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  position: relative;
+  -webkit-user-drag: none;
+  user-select: none;
+}
+
+/* Block all interactions with Tenor iframe */
+.tenor-gif-embed::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: auto;
+  background: transparent;
+  border-radius: inherit;
+  cursor: default;
+}
+
+.tenor-gif-embed a {
+  display: none;
+}
+
+/* Disable context menu on all images */
+img {
+  -webkit-user-drag: none;
+  user-select: none;
+  pointer-events: none;
+}
+
+/* ----------------------------------------------------------
+   6. BUTTON SYSTEM
+   ---------------------------------------------------------- */
+.btn {
+  display: flex;
+  flex-direction: row;
+  gap: var(--space-3);
+  width: 100%;
+  max-width: 320px;
+  margin-top: var(--space-2);
+  justify-content: center;
+}
+
+.btn-row {
+  flex-direction: row;
+  justify-content: center;
+  gap: var(--space-4);
+}
+
+.btn a,
+.btn button,
+button.btn-el {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  text-decoration: none;
+  padding: var(--space-3) var(--space-6);
+  min-height: 48px;
+  min-width: 48px;
+  border-radius: 10px;
+  font-family: "DM Sans", system-ui, sans-serif;
+  font-weight: 600;
+  font-size: 0.9375rem;
+  line-height: 1;
+  letter-spacing: 0.01em;
+  color: var(--text-primary);
+  background: var(--bg-card);
+  border: 1.5px solid var(--border-light);
+  box-shadow: var(--shadow-sm);
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+  user-select: none;
+  transition:
+    transform var(--duration-fast) var(--ease-spring),
+    box-shadow var(--duration-fast) var(--ease-smooth),
+    background var(--duration-fast) ease,
+    border-color var(--duration-fast) ease,
+    color var(--duration-fast) ease,
+    letter-spacing 0.2s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Shine sweep overlay */
+.btn a::after,
+.btn button::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -75%;
+  width: 50%;
+  height: 200%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.15),
+    transparent
+  );
+  transform: skewX(-20deg);
+  transition: left 0.5s ease;
+  pointer-events: none;
+}
+
+.btn a:hover::after,
+.btn button:hover::after {
+  left: 125%;
+}
+
+/* ——— SMILEY FACE BUTTONS ——— */
+.c-loveButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  text-decoration: none;
+  cursor: pointer;
+  border: 0;
+  outline: 0;
+  z-index: 1;
+}
+
+.c-loveButton__face {
+  font-size: 1.2em;
+  line-height: 1;
+  pointer-events: none;
+  transition:
+    transform 0.35s var(--ease-spring),
+    opacity 0.25s ease;
+}
+
+/* Hover zone layers — invisible proximity detectors */
+.c-loveButton__hoverZone {
+  position: absolute;
+  z-index: -1;
+  pointer-events: auto;
+  cursor: default;
+}
+
+.c-loveButton__hoverZone--outer {
+  width: 250%;
+  height: 400%;
+}
+
+.c-loveButton__hoverZone--inner {
+  width: 170%;
+  height: 260%;
+}
+
+/* ——— YES BUTTON: 😴 → 😊 → 😍 → 💕 ——— */
+.btn-yes .c-loveButton__face::after {
+  content: '\1F634'; /* 😴 sleepy — far away */
+  transition: all 0.4s var(--ease-spring);
+}
+
+/* Outer zone → 😊 with gentle pop */
+.btn-yes .c-loveButton__hoverZone--outer:hover ~ .c-loveButton__face::after {
+  content: '\1F60A'; /* 😊 smile */
+  animation: face-pop-in 0.5s var(--ease-spring) 0.1s both;
+}
+
+.btn-yes .c-loveButton__hoverZone--outer:hover ~ .c-loveButton__face {
+  transform: scale(1.15) rotate(-5deg);
+  transition-delay: 0.1s;
+}
+
+/* Inner zone → 😍 with love bounce */
+.btn-yes .c-loveButton__hoverZone--inner:hover ~ .c-loveButton__face::after {
+  content: '\1F60D'; /* 😍 heart eyes */
+  animation: face-in-love 0.6s var(--ease-bounce) 0.08s both;
+}
+
+.btn-yes .c-loveButton__hoverZone--inner:hover ~ .c-loveButton__face {
+  transform: scale(1.25) rotate(5deg);
+  transition-delay: 0.05s;
+}
+
+/* Direct hover on button → 💕 burst */
+.btn-yes:hover .c-loveButton__face::after {
+  content: '\1F495'; /* 💕 two hearts */
+  animation: face-heart-pulse 0.8s var(--ease-spring) both;
+}
+
+.btn-yes:hover .c-loveButton__face {
+  transform: scale(1.3);
+  transition-delay: 0s;
+}
+
+/* Reset face when not hovering */
+.btn-yes .c-loveButton__face {
+  transform: scale(1) rotate(0deg);
+  transition:
+    transform 0.5s var(--ease-spring) 0.15s,
+    opacity 0.3s ease 0.1s;
+}
+
+/* ——— NO BUTTON: 😐 → 😨 → 😰 → 😱 ——— */
+.btn-no .c-loveButton__face::after {
+  content: '\1F610'; /* 😐 neutral — far away */
+  transition: all 0.4s var(--ease-spring);
+}
+
+/* Outer zone → 😨 with nervous wobble */
+.btn-no .c-loveButton__hoverZone--outer:hover ~ .c-loveButton__face::after {
+  content: '\1F628'; /* 😨 fearful */
+  animation: face-wobble 0.5s var(--ease-smooth) 0.12s both;
+}
+
+.btn-no .c-loveButton__hoverZone--outer:hover ~ .c-loveButton__face {
+  transform: scale(1.1) rotate(3deg);
+  transition-delay: 0.12s;
+}
+
+/* Inner zone → 😰 with scared shake */
+.btn-no .c-loveButton__hoverZone--inner:hover ~ .c-loveButton__face::after {
+  content: '\1F630'; /* 😰 anxious */
+  animation: face-scared 0.4s var(--ease-smooth) 0.06s both;
+}
+
+.btn-no .c-loveButton__hoverZone--inner:hover ~ .c-loveButton__face {
+  transform: scale(1.2) rotate(-3deg);
+  transition-delay: 0.06s;
+}
+
+/* Direct hover on button → 😱 panic jump */
+.btn-no:hover .c-loveButton__face::after {
+  content: '\1F631'; /* 😱 scream */
+  animation: face-panic 0.3s var(--ease-smooth) both;
+}
+
+.btn-no:hover .c-loveButton__face {
+  transform: scale(1.35) translateY(-3px);
+  transition-delay: 0s;
+}
+
+/* Reset face when not hovering */
+.btn-no .c-loveButton__face {
+  transform: scale(1) rotate(0deg);
+  transition:
+    transform 0.5s var(--ease-spring) 0.15s,
+    opacity 0.3s ease 0.1s;
+}
+
+/* ——— YES BUTTON ——— */
+.btn-yes {
+  background: var(--bg-card);
+  color: var(--rose-600);
+  border: 2px solid var(--rose-200);
+  box-shadow:
+    0 2px 8px rgba(225, 29, 72, 0.08),
+    0 0 0 0 rgba(225, 29, 72, 0);
+  animation: btn-yes-breathe 3s ease-in-out infinite;
+}
+
+.btn-yes:hover {
+  transform: scale(1.08) translateY(-2px);
+  background: var(--bg-card);
+  border-color: var(--rose-500);
+  color: var(--rose-500);
+  box-shadow:
+    0 6px 20px rgba(225, 29, 72, 0.15),
+    0 0 0 3px rgba(225, 29, 72, 0.08);
+  letter-spacing: 0.04em;
+}
+
+.btn-yes:active {
+  transform: scale(0.92) translateY(1px);
+  border-color: var(--rose-600);
+  box-shadow:
+    0 1px 4px rgba(225, 29, 72, 0.1);
+  transition-duration: var(--duration-instant);
+}
+
+/* ——— NO BUTTON ——— */
+.btn-no {
+  background: var(--bg-card);
+  color: var(--text-secondary);
+  border-color: var(--border-light);
+  box-shadow:
+    0 1px 3px rgba(0, 0, 0, 0.04),
+    0 0 0 0 transparent;
+}
+
+.btn-no:hover {
+  transform: scale(1.06) translateY(-1px);
+  box-shadow:
+    0 6px 16px rgba(0, 0, 0, 0.1),
+    0 2px 6px rgba(0, 0, 0, 0.06);
+  background: var(--bg-hover);
+  border-color: var(--rose-200);
+  color: var(--text-primary);
+  letter-spacing: 0.03em;
+}
+
+.btn-no:active {
+  transform: scale(0.93) translateY(1px);
+  box-shadow:
+    0 1px 3px rgba(0, 0, 0, 0.06);
+  transition-duration: var(--duration-instant);
+}
+
+.page-no1 .btn-no {
+  border-color: var(--amber-100);
+  box-shadow:
+    0 1px 3px rgba(251, 191, 36, 0.08),
+    0 0 0 0 transparent;
+}
+.page-no1 .btn-no:hover {
+  border-color: var(--amber-400);
+  box-shadow:
+    0 6px 16px rgba(251, 191, 36, 0.2),
+    0 2px 6px rgba(251, 191, 36, 0.1);
+}
+
+.page-no2 .btn-no {
+  border-color: var(--orange-100);
+  box-shadow:
+    0 1px 3px rgba(249, 115, 22, 0.08),
+    0 0 0 0 transparent;
+}
+.page-no2 .btn-no:hover {
+  border-color: var(--orange-400);
+  box-shadow:
+    0 6px 16px rgba(249, 115, 22, 0.2),
+    0 2px 6px rgba(249, 115, 22, 0.1);
+}
+
+/* ——— DODGE BUTTON (no3) ——— */
+#move-random {
+  position: relative;
+  background: var(--bg-card);
+  color: var(--rose-500);
+  border-color: var(--rose-200);
+  cursor: default;
+  box-shadow:
+    0 2px 6px rgba(244, 63, 94, 0.12),
+    0 0 0 0 transparent;
+  animation: btn-dodge-pulse 2.5s ease-in-out infinite;
+}
+
+#move-random:hover {
+  border-color: var(--rose-400);
+  box-shadow:
+    0 8px 24px rgba(244, 63, 94, 0.25),
+    0 0 0 3px rgba(244, 63, 94, 0.1);
+  animation: none;
+}
+
+.page-yes .btn-yes {
+  background: linear-gradient(135deg, var(--rose-600), var(--rose-500));
+  border-color: transparent;
+  box-shadow:
+    0 4px 15px rgba(244, 63, 94, 0.35),
+    0 0 0 0 rgba(244, 63, 94, 0);
+  animation: glow-pulse 2s ease-in-out infinite;
+  font-size: 1.05rem;
+  letter-spacing: 0.05em;
+  padding: var(--space-3) var(--space-8);
+}
+
+.page-yes .btn-yes:hover {
+  transform: scale(1.1) translateY(-2px);
+  box-shadow:
+    0 10px 30px rgba(244, 63, 94, 0.45),
+    0 0 0 6px rgba(244, 63, 94, 0.12);
+  letter-spacing: 0.1em;
+  animation: none;
+}
+
+.page-yes .btn-yes:active {
+  transform: scale(0.95) translateY(1px);
+  box-shadow: 0 2px 8px rgba(244, 63, 94, 0.3);
+  transition-duration: var(--duration-instant);
+  animation: none;
+}
+
+.btn a:focus-visible,
+.btn button:focus-visible,
+button.btn-el:focus-visible,
+#move-random:focus-visible {
+  outline: 2.5px solid var(--border-focus);
+  outline-offset: 3px;
+}
+
+/* ----------------------------------------------------------
+   7. STAGGERED REVEAL — Initial hidden state (prevents FOUC)
+   ---------------------------------------------------------- */
+.container-init-hidden {
+  opacity: 0;
+  transform: scale(0.95);
+}
+
+.stagger-hidden {
+  opacity: 0;
+  transform: translateY(16px);
+}
+
+/* ----------------------------------------------------------
+   8. UTILITIES
+   ---------------------------------------------------------- */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.dodge-tooltip {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin-top: var(--space-1);
+  min-height: 1.2em;
+  transition: opacity var(--duration-fast) ease;
+}
+
+.confetti-container,
+.hearts-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 100;
+}

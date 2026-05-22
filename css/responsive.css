@@ -1,0 +1,208 @@
+/* ============================================================
+   📱 RESPONSIVE.CSS — Breakpoints & Mobile-First Overrides
+   ============================================================
+   Phase 1 — Mobile-first: base styles target < 640px
+   ============================================================ */
+
+/* ----------------------------------------------------------
+   0. MOBILE GIF OVERRIDE (base < 640px)
+   ---------------------------------------------------------- */
+.tenor-gif-embed,
+.gif-container {
+  max-width: 140px;
+}
+
+/* ----------------------------------------------------------
+   1. SMALL TABLET (640px+)
+   ---------------------------------------------------------- */
+@media (min-width: 640px) {
+  .container {
+    max-width: 480px;
+    padding: var(--space-4) var(--space-6);
+    border-radius: 24px;
+  }
+
+  .btn {
+    gap: 20px;
+  }
+
+  h1 {
+    font-size: 1.75rem;
+    line-height: 2.25rem;
+  }
+
+  p {
+    font-size: 1.0625rem;
+    line-height: 1.55;
+  }
+
+  .btn a,
+  .btn button,
+  button.btn-el {
+    font-size: 1rem;
+    padding: var(--space-3) var(--space-8);
+  }
+
+  .tenor-gif-embed,
+  .gif-container {
+    max-width: 180px;
+  }
+}
+
+/* ----------------------------------------------------------
+   2. TABLET (768px+)
+   ---------------------------------------------------------- */
+@media (min-width: 768px) {
+  body {
+    padding: var(--space-6);
+  }
+
+  .container {
+    max-width: 480px;
+    padding: var(--space-10) var(--space-8);
+    gap: var(--space-6);
+    box-shadow: var(--shadow-lg);
+    border-radius: 16px;
+  }
+
+  h1 {
+    font-size: 1.75rem;
+    line-height: 2.25rem;
+  }
+
+  p {
+    font-size: 1.0625rem;
+    line-height: 1.55;
+  }
+
+  .btn {
+    gap: 20px;
+  }
+
+  .tenor-gif-embed,
+  .gif-container {
+    max-width: 180px;
+  }
+}
+
+/* ----------------------------------------------------------
+   3. DESKTOP (1024px+)
+   ---------------------------------------------------------- */
+@media (min-width: 1024px) {
+  .container {
+    max-width: 500px;
+    padding: var(--space-12) var(--space-10);
+    gap: var(--space-6);
+    border-radius: var(--radius-lg);
+  }
+
+  h1 {
+    font-size: 2rem;
+    line-height: 2.5rem;
+  }
+
+  p {
+    font-size: 1.125rem;
+    line-height: 1.6;
+  }
+
+  .btn a,
+  .btn button,
+  button.btn-el {
+    min-height: 52px;
+    padding: var(--space-4) var(--space-10);
+  }
+
+  .btn-yes:hover {
+    transform: scale(1.06);
+  }
+
+  .btn-no:hover {
+    transform: scale(1.04);
+  }
+
+  .tenor-gif-embed,
+  .gif-container {
+    max-width: 200px;
+  }
+}
+
+/* ----------------------------------------------------------
+   4. WIDE DESKTOP (1280px+)
+   ---------------------------------------------------------- */
+@media (min-width: 1280px) {
+  .container {
+    max-width: 520px;
+  }
+
+  h1 {
+    font-size: 2.25rem;
+  }
+}
+
+/* ----------------------------------------------------------
+   5. SHORT SCREENS (Mobile landscape)
+   ---------------------------------------------------------- */
+@media (max-height: 600px) {
+  .container {
+    gap: var(--space-3);
+    padding: var(--space-4);
+  }
+
+  .tenor-gif-embed,
+  .gif-container {
+    max-width: 100px;
+  }
+
+  h1 {
+    font-size: 1.25rem;
+  }
+
+  .btn {
+    margin-top: 0;
+    gap: var(--space-2);
+  }
+}
+
+/* ----------------------------------------------------------
+   6. VERY SMALL SCREENS (< 360px)
+   ---------------------------------------------------------- */
+@media (max-width: 359px) {
+  .container {
+    width: 100vw;
+    margin: 0;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  h1 {
+    font-size: 1.25rem;
+  }
+
+  .btn a,
+  .btn button,
+  button.btn-el {
+    font-size: 0.875rem;
+    min-height: 44px;
+    padding: var(--space-2) var(--space-4);
+  }
+}
+
+/* ----------------------------------------------------------
+   7. PAGE-SPECIFIC SPACING OVERRIDES
+   ---------------------------------------------------------- */
+/* no1: tighter spacing (gap: 12px) at all breakpoints */
+@media (min-width: 640px) {
+  .page-no1 .container { gap: var(--space-3); }
+}
+@media (min-width: 768px) {
+  .page-no1 .container { gap: var(--space-3); }
+}
+
+/* no2: even tighter spacing (gap: 8px) at all breakpoints */
+@media (min-width: 640px) {
+  .page-no2 .container { gap: var(--space-2); }
+}
+@media (min-width: 768px) {
+  .page-no2 .container { gap: var(--space-2); }
+}

@@ -1,0 +1,182 @@
+/* ============================================================
+   ♿ ACCESSIBILITY.CSS — Reduced Motion, Focus, Contrast
+   ============================================================
+   Phase 1 — WCAG AA compliance
+   ============================================================ */
+
+/* ----------------------------------------------------------
+   1. REDUCED MOTION
+   ---------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .anim-container,
+  .anim-gif,
+  .anim-heading,
+  .anim-subtitle,
+  .anim-buttons {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  body {
+    animation: none !important;
+  }
+
+  .heart-particle,
+  .confetti-particle,
+  .confetti-burst-particle {
+    display: none !important;
+  }
+
+  .page-yes .btn-yes {
+    animation: none !important;
+  }
+
+  .btn-yes {
+    animation: none !important;
+  }
+
+  #move-random {
+    animation: none !important;
+  }
+
+  .btn a::after,
+  .btn button::after {
+    display: none !important;
+  }
+
+  .screen-shake {
+    animation: none !important;
+  }
+
+  .shake-subtle,
+  .shake-moderate {
+    animation: none !important;
+  }
+
+  #move-random {
+    transition: none !important;
+  }
+
+
+  .heart-beat,
+  .caught {
+    animation: none !important;
+  }
+
+  .celebration-heading {
+    animation: none !important;
+  }
+
+  .page-no3 .btn-yes:hover {
+    animation: none !important;
+  }
+
+  .page-no3 .anim-gif,
+  .page-no3 .anim-heading,
+  .page-no3 .anim-subtitle,
+  .page-no3 .anim-buttons {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .c-loveButton__face,
+  .c-loveButton__face::after {
+    animation: none !important;
+  }
+}
+
+/* ----------------------------------------------------------
+   2. HIGH CONTRAST MODE
+   ---------------------------------------------------------- */
+@media (prefers-contrast: more) {
+  :root {
+    --text-primary: #000000;
+    --text-secondary: #444444;
+    --border-light: #888888;
+    --bg-base: #ffffff;
+    --bg-card: #ffffff;
+  }
+
+  .btn a,
+  button.btn-el {
+    border-width: 2px;
+  }
+
+  .btn-yes {
+    background: #d41c3a;
+    border-color: #d41c3a;
+  }
+
+  .container::before {
+    height: 4px;
+    opacity: 1;
+  }
+
+  .tenor-gif-embed,
+  .gif-container {
+    border: 1px solid #999;
+  }
+}
+
+/* ----------------------------------------------------------
+   3. FOCUS STYLES (Enhanced)
+   ---------------------------------------------------------- */
+/* Keyboard-only focus indicator */
+.btn a:focus-visible,
+button.btn-el:focus-visible,
+#move-random:focus-visible,
+a:focus-visible {
+  outline: 3px solid var(--border-focus);
+  outline-offset: 3px;
+  border-radius: var(--radius-full);
+}
+
+/* Remove focus ring for mouse users */
+.btn a:focus:not(:focus-visible),
+button.btn-el:focus:not(:focus-visible),
+#move-random:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* ----------------------------------------------------------
+   4. PRINT STYLES
+   ---------------------------------------------------------- */
+@media print {
+  body {
+    background: white;
+    color: black;
+  }
+
+  .container {
+    box-shadow: none;
+    border: 1px solid #ccc;
+  }
+
+  .btn a,
+  button.btn-el {
+    background: white !important;
+    color: black !important;
+    border: 1px solid black !important;
+    box-shadow: none !important;
+  }
+
+  .tenor-gif-embed {
+    display: none;
+  }
+
+  .heart-particle,
+  .confetti-particle {
+    display: none;
+  }
+}
